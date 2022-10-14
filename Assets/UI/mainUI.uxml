@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement style="width: auto;">
+        <ui:TextField picking-mode="Ignore" label="Speed" name="Speed" password="false" />
+        <ui:TextField picking-mode="Ignore" label="Spawn" name="Spawn" style="justify-content: center;" />
+        <ui:TextField picking-mode="Ignore" label="Distance" name="Distance" />
+    </ui:VisualElement>
+</ui:UXML>
