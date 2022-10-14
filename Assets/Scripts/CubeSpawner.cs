@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -34,7 +35,7 @@ public class CubeSpawner : MonoBehaviour
             {
                 _spawnField.value = evt.previousValue;
             }
-            _spawnRate = float.Parse(_spawnField.value);
+            _spawnRate =  ParseString(_spawnField.value);
         });
         _speedField.RegisterValueChangedCallback(evt =>
         {
@@ -42,7 +43,7 @@ public class CubeSpawner : MonoBehaviour
             {
                 _speedField.value = evt.previousValue;
             }
-            _cubeSpeed = float.Parse(_speedField.value);
+            _cubeSpeed = ParseString(_speedField.value);
         });
         _distanceField.RegisterValueChangedCallback(evt =>
         {
@@ -50,7 +51,7 @@ public class CubeSpawner : MonoBehaviour
             {
                 _distanceField.value = evt.previousValue;
             }
-            _cubeDistance = float.Parse(_distanceField.value);
+            _cubeDistance = ParseString(_distanceField.value);
         });
     }
     private void Update()
@@ -74,5 +75,14 @@ public class CubeSpawner : MonoBehaviour
                 }
             }
         }
+    }
+
+
+    private float ParseString(string s)
+    {
+        if (s.Length == 0) { return 0; }
+        string finalStr = s;
+        finalStr = finalStr.EndsWith('.') ? finalStr.Remove(finalStr.Length - 1) : finalStr;
+        return float.Parse(finalStr, CultureInfo.InvariantCulture);
     }
 }

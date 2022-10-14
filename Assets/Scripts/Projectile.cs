@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour, IPooledObject, IProjectile
         float distance = _speed * Time.deltaTime;
         transform.position += direction * distance;
         _distance += distance;
-        if (_distance >= _maxDistance)
+        if (_distance >= _maxDistance || _speed == 0)
         {
             Kill();
         }
